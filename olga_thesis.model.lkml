@@ -5,9 +5,17 @@ include: "*.view"
 
 datagroup: olga_thesis_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "24 hours"
 }
 
 persist_with: olga_thesis_default_datagroup
 
-explore: hourly_irish_weather {}
+explore: hourly_irish_weather {
+  join: warm_period_weather {
+    type: left_outer
+    sql_on: (${hourly_irish_weather.observed_date} = ${warm_period_weather.date}) ;;
+    relationship: many_to_one
+  }
+}
+
+explore: warm_period_weather{}

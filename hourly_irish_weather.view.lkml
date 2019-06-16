@@ -18,7 +18,7 @@ view: hourly_irish_weather {
     sql: ${TABLE}.county ;;
   }
 
-  dimension_group: date {
+  dimension_group: observed {
     type: time
     timeframes: [
       raw,
@@ -28,6 +28,8 @@ view: hourly_irish_weather {
       day_of_week,
       hour_of_day,
       month,
+      month_num,
+      month_name,
       quarter,
       year
     ]
@@ -141,19 +143,19 @@ view: hourly_irish_weather {
   measure: max_temperature {
     type: max
     sql: ${temperature} ;;
-    drill_fields: [date_time, station, county, temperature]
+    drill_fields: [observed_time, station, county, temperature]
   }
 
   measure: min_temperature {
     type:  min
     sql: ${temperature} ;;
-    drill_fields: [date_time, station, county, temperature]
+    drill_fields: [observed_time, station, county, temperature]
   }
 
   measure: average_temperature {
     type:  average
     sql: ${temperature} ;;
-    drill_fields: [date_time, station, county, temperature]
+    drill_fields: [observed_time, station, county, temperature]
     value_format_name: decimal_1
   }
 
@@ -161,13 +163,20 @@ view: hourly_irish_weather {
     description: "Total sunshine duration, hours"
     type:  sum
     sql:  ${sun} ;;
-    drill_fields: [date_time, station, county, sun]
+    drill_fields: [observed_time, station, county, sun]
   }
 
   measure: total_rain {
     description: "Total percipitation amount, mm"
     type:  sum
     sql:  ${rain} ;;
-    drill_fields: [date_time, station, county, rain]
+    drill_fields: [observed_time, station, county, rain]
   }
+
+  #measure: ggd {
+  #  type:  sum
+  #  sql:  (warm_period_weather.daily_max_temperature + warm_period_weather.daily_min_temperature) / 2 - 10 ;;
+  #  sql: (${daily_max_temperature} + ${daily_min_temperature}) / 2 - 10 ;;
+  #}
+
 }
