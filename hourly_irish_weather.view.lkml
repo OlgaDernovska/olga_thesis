@@ -164,6 +164,7 @@ view: hourly_irish_weather {
     type:  sum
     sql:  ${sun} ;;
     drill_fields: [observed_time, station, county, sun]
+    value_format_name: decimal_1
   }
 
   measure: total_rain {
@@ -171,9 +172,24 @@ view: hourly_irish_weather {
     type:  sum
     sql:  ${rain} ;;
     drill_fields: [observed_time, station, county, rain]
+    value_format_name: decimal_1
   }
 
-  #measure: ggd {
+  measure: avg_max_temp {
+    description: "Average of daily maximum temperatures"
+    type:  average
+    sql: ${warm_period_weather.daily_max_temperature} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: gdd {
+    description: "Growing degree days"
+    type: sum
+    sql: GREATEST(((${warm_period_weather.daily_max_temperature} + ${warm_period_weather.daily_min_temperature}) / 2 - 10), 0) ;;
+    value_format_name: decimal_1
+  }
+
+  #measure: gdd {
   #  type:  sum
   #  sql:  (warm_period_weather.daily_max_temperature + warm_period_weather.daily_min_temperature) / 2 - 10 ;;
   #  sql: (${daily_max_temperature} + ${daily_min_temperature}) / 2 - 10 ;;

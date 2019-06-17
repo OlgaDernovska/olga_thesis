@@ -12,7 +12,6 @@ view: warm_period_weather {
 
       GROUP BY 1,2
       ORDER BY 1 DESC
-      LIMIT 5000
        ;;
     }
 
