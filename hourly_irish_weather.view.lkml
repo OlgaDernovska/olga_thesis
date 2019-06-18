@@ -57,6 +57,12 @@ view: hourly_irish_weather {
     sql: ${TABLE}.longitude ;;
   }
 
+  dimension: station_location {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: sea_pressure {
     description: "Mean sea-level pressure, hPa"
     type: number

@@ -19,3 +19,5 @@ explore: hourly_irish_weather {
 }
 
 #explore: warm_period_weather{}
+
+explore: seven_years {}
