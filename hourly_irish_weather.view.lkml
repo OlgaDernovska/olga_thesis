@@ -49,6 +49,7 @@ view: hourly_irish_weather {
 
   dimension: id {
     type: number
+    hidden: yes
     sql: ${TABLE}.int64_field_0 ;;
   }
 

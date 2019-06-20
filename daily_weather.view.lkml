@@ -2,6 +2,7 @@ view: daily_weather {
 
     derived_table: {
       sql: SELECT
+        row_number() OVER(ORDER BY hourly_irish_weather.observed_date) AS prim_key,
         CAST(hourly_irish_weather.date  AS DATE) AS hourly_irish_weather_observed_date,
         hourly_irish_weather.station  AS hourly_irish_weather_station,
         MAX(hourly_irish_weather.temp ) AS hourly_irish_weather_max_temperature,
@@ -11,6 +12,12 @@ view: daily_weather {
       GROUP BY 1,2
       ORDER BY 1 DESC
        ;;
+    }
+
+    dimension: prim_key {
+      type: number
+      primary_key: yes
+      sql: ${TABLE}.prim_key ;;
     }
 
     measure: count {
