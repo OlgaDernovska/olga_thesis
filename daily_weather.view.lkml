@@ -1,4 +1,4 @@
-view: warm_period_weather {
+view: daily_weather {
 
     derived_table: {
       sql: SELECT
@@ -7,8 +7,6 @@ view: warm_period_weather {
         MAX(hourly_irish_weather.temp ) AS hourly_irish_weather_max_temperature,
         MIN(hourly_irish_weather.temp ) AS hourly_irish_weather_min_temperature
       FROM olga_thesis.hourly_irish_weather  AS hourly_irish_weather
-      WHERE
-        ((EXTRACT(MONTH FROM hourly_irish_weather.date ) >= 4 AND EXTRACT(MONTH FROM hourly_irish_weather.date ) <= 10))
 
       GROUP BY 1,2
       ORDER BY 1 DESC

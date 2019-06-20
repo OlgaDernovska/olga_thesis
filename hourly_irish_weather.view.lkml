@@ -36,6 +36,11 @@ view: hourly_irish_weather {
     sql: ${TABLE}.date ;;
   }
 
+  dimension: is_warm_period {
+    type: yesno
+    sql: ${observed_month_num} in (4, 5, 6, 7, 8, 9, 10) ;;
+  }
+
   dimension: dew_point {
     description: "Dew Point Air Temperature, °C"
     type: number
@@ -184,21 +189,19 @@ view: hourly_irish_weather {
   measure: avg_max_temp {
     description: "Average of daily maximum temperatures"
     type:  average
-    sql: ${warm_period_weather.daily_max_temperature} ;;
+    sql: ${daily_weather.daily_max_temperature} ;;
     value_format_name: decimal_1
   }
 
   measure: gdd {
     description: "Growing degree days"
     type: sum
-    sql: GREATEST(((${warm_period_weather.daily_max_temperature} + ${warm_period_weather.daily_min_temperature}) / 2 - 10), 0) ;;
+    sql: GREATEST(((${daily_weather.daily_max_temperature} + ${daily_weather.daily_min_temperature}) / 2 - 10), 0) ;;
     value_format_name: decimal_1
   }
 
-  #measure: gdd {
-  #  type:  sum
-  #  sql:  (warm_period_weather.daily_max_temperature + warm_period_weather.daily_min_temperature) / 2 - 10 ;;
-  #  sql: (${daily_max_temperature} + ${daily_min_temperature}) / 2 - 10 ;;
-  #}
+
+#   {% condition warm_weather_period_filter %} (EXTRACT(MONTH FROM hourly_irish_weather.date ) >= 4 AND EXTRACT(MONTH FROM hourly_irish_weather.date ) <= 10) {% endcondition %}
+
 
 }

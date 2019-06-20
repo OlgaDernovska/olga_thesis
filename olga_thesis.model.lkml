@@ -11,13 +11,12 @@ datagroup: olga_thesis_default_datagroup {
 persist_with: olga_thesis_default_datagroup
 
 explore: hourly_irish_weather {
-  join: warm_period_weather {
+  join: daily_weather {
     type: left_outer
-    sql_on: (${hourly_irish_weather.observed_date} = ${warm_period_weather.date}) and (${hourly_irish_weather.station} = ${warm_period_weather.station});;
+    sql_on: (${hourly_irish_weather.observed_date} = ${daily_weather.date}) and (${hourly_irish_weather.station} = ${daily_weather.station});;
     relationship: many_to_one
   }
 }
 
-#explore: warm_period_weather{}
 
 explore: seven_years {}
