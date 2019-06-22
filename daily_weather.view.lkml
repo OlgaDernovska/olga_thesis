@@ -45,6 +45,13 @@ view: daily_weather {
       sql: ${TABLE}.hourly_irish_weather_min_temperature ;;
     }
 
+    dimension: gdd {
+      type:  number
+      description: "Gdd of one day"
+      sql: greatest((${daily_max_temperature}+${daily_min_temperature})/2-10, 0) ;;
+      value_format_name: decimal_1
+    }
+
     set: detail {
       fields: [hourly_irish_weather.observed_date, hourly_irish_weather.station, hourly_irish_weather.max_temperature, hourly_irish_weather.min_temperature]
     }

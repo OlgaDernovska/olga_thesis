@@ -195,9 +195,9 @@ view: hourly_irish_weather {
   }
 
   measure: gdd {
-    description: "Growing degree days"
+    description: "Growing degree days sum"
     type: sum
-    sql: GREATEST(((${daily_weather.daily_max_temperature} + ${daily_weather.daily_min_temperature}) / 2 - 10), 0) ;;
+    sql: ${daily_weather.gdd};;
     value_format_name: decimal_1
   }
 
