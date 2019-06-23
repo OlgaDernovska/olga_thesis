@@ -14,10 +14,10 @@ view: daily_weather {
     }
 
     dimension: prim_key {
-      type: number
+      type: string
       primary_key: yes
       hidden:  yes
-      sql: Concat(${date}, ${station}) ;;
+      sql: Concat(cast(${date} as string), ${station}) ;;
     }
 
     measure: count {
@@ -43,6 +43,28 @@ view: daily_weather {
     dimension: daily_min_temperature {
       type: number
       sql: ${TABLE}.hourly_irish_weather_min_temperature ;;
+    }
+
+    dimension: temperature_bucket {
+      case: {
+        when: {
+          sql: ${daily_max_temperature} < 0 ;;
+          label: "Below zero"
+        }
+        when: {
+          sql: ${daily_max_temperature} >= 0 and ${daily_max_temperature} < 10 ;;
+          label: "0 to 10 degrees"
+        }
+        when: {
+          sql: ${daily_max_temperature} >= 10 and ${daily_max_temperature} < 20 ;;
+          label: "10 to 20 degrees"
+        }
+        when: {
+          sql: ${daily_max_temperature} >= 20 ;;
+          label: "Over 20 degrees"
+        }
+        else: "Unknown"
+      }
     }
 
     dimension: gdd {
