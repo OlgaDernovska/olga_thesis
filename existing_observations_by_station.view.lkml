@@ -8,16 +8,32 @@ view: existing_observations_by_station {
         (SELECT
           hourly_irish_weather.station  AS station,
           EXTRACT(YEAR FROM hourly_irish_weather.date ) AS hourly_irish_weather_observed_year,
-          MAX(hourly_irish_weather.temp ) AS hourly_irish_weather_max_temperature
+          avg({% parameter parameter_field %}) AS hourly_irish_weather_max_temperature
         FROM olga_thesis.hourly_irish_weather  AS hourly_irish_weather
 
         GROUP BY 1,2
         ORDER BY 1 )
 
-        WHERE hourly_irish_weather_max_temperature is not null
-        group by 1
-        order by 1
-       ;;
+      WHERE hourly_irish_weather_max_temperature is not null
+      group by 1
+      order by 1
+      ;;
+  }
+
+  parameter: parameter_field {
+    type: unquoted
+    allowed_value: {
+      label: "Temperature"
+      value: "hourly_irish_weather.temp"
+    }
+    allowed_value: {
+      label: "Rain"
+      value: "hourly_irish_weather.rain"
+    }
+    allowed_value: {
+      label: "Sun"
+      value: "hourly_irish_weather.sun"
+    }
   }
 
   measure: count {
