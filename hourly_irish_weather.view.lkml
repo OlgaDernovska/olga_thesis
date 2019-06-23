@@ -4,12 +4,14 @@ view: hourly_irish_weather {
   dimension: cloud_amount {
     description: "Cloud amount, okta (1/8 of the sky)"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.clamt ;;
   }
 
   dimension: cloud_ceiling_height {
     description: "Cloud ceiling height, 100s of feet (if no clouds, value is 999)"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.clht ;;
   }
 
@@ -44,6 +46,7 @@ view: hourly_irish_weather {
   dimension: dew_point {
     description: "Dew Point Air Temperature, °C"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.dewpt ;;
   }
 
@@ -55,11 +58,13 @@ view: hourly_irish_weather {
 
   dimension: latitude {
     type: number
+    hidden: yes
     sql: ${TABLE}.latitude ;;
   }
 
   dimension: longitude {
     type: number
+    hidden: yes
     sql: ${TABLE}.longitude ;;
   }
 
@@ -72,6 +77,7 @@ view: hourly_irish_weather {
   dimension: sea_pressure {
     description: "Mean sea-level pressure, hPa"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.msl ;;
   }
 
@@ -84,6 +90,7 @@ view: hourly_irish_weather {
   dimension: relative_humidity {
     description: "Relative humidity, %"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.rhum ;;
   }
 
@@ -108,18 +115,21 @@ view: hourly_irish_weather {
   dimension: vapour_pressure {
     description: "Vapour Pressure, hPa"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.vappr ;;
   }
 
   dimension: visibility {
     description: "Visibility, m"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.vis ;;
   }
 
   dimension: w_code {
     description: "Synop code past weather"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.w ;;
   }
 
@@ -138,12 +148,14 @@ view: hourly_irish_weather {
   dimension: wet_bulb {
     description: "Wet bulb air temperature, °C"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.wetb ;;
   }
 
   dimension: ww_code {
     description: "Synop code present weather"
     type: number
+    view_label: "Secondary Hourly Metrics"
     sql: ${TABLE}.ww ;;
   }
 
