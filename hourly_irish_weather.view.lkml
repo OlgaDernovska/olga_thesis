@@ -163,6 +163,13 @@ view: hourly_irish_weather {
     type: count
     drill_fields: []
   }
+#   measure: dynamic_arrow {
+#     sql: 1 ;;
+#   html:
+#   {% if degree > 0 and degree < 90 %}
+#   <img src="https://www.wpclipart.com/signs_symbol/arrows/arrows_color/arrow_outline_yellow_up.png" height={{ count._value }} width= {{ count._value }}  style="image-orientation: 90deg;"></img> ;;
+#   ..
+#   }
 
   measure: max_temperature {
     type: max
@@ -203,13 +210,6 @@ view: hourly_irish_weather {
     description: "Average of daily maximum temperatures"
     type:  average
     sql: ${daily_weather.daily_max_temperature} ;;
-    value_format_name: decimal_1
-  }
-
-  measure: gdd {
-    description: "Growing degree days sum"
-    type: sum
-    sql: ${daily_weather.gdd};;
     value_format_name: decimal_1
   }
 

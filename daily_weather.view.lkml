@@ -69,8 +69,15 @@ view: daily_weather {
 
     dimension: gdd {
       type:  number
-      description: "Gdd of one day"
+      description: "Growing degree days for one day"
       sql: greatest((${daily_max_temperature}+${daily_min_temperature})/2-10, 0) ;;
+      value_format_name: decimal_1
+    }
+
+    measure: gdd_measure {
+      description: "Growing degree days sum"
+      type: sum
+      sql: ${daily_weather.gdd};;
       value_format_name: decimal_1
     }
 
