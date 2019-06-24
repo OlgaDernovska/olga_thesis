@@ -98,6 +98,10 @@ view: hourly_irish_weather {
     description: "Name of the weather station"
     type: string
     sql: ${TABLE}.station ;;
+    link: {
+      label: "Where is this station?"
+      url: "/looks/1361?f[hourly_irish_weather.station]={{ value }} "
+      }
   }
 
   dimension: sun {

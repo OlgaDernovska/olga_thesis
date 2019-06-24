@@ -45,6 +45,10 @@ view: existing_observations_by_station {
     primary_key: yes
     type: string
     sql: ${TABLE}.station ;;
+    link: {
+      label: "Where is this station?"
+      url: "/looks/1361?f[hourly_irish_weather.station]={{ value }} "
+    }
   }
 
   dimension: start_time {

@@ -33,6 +33,10 @@ view: daily_weather {
     dimension: station {
       type: string
       sql: ${TABLE}.hourly_irish_weather_station ;;
+      link: {
+        label: "Where is this station?"
+        url: "/looks/1361?f[hourly_irish_weather.station]={{ value }} "
+      }
     }
 
     dimension: daily_max_temperature {
