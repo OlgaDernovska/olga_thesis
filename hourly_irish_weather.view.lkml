@@ -217,6 +217,30 @@ view: hourly_irish_weather {
     value_format_name: decimal_1
   }
 
+  measure: the_warmest_day {
+    description: "The day with the max highest temperature"
+    type: max
+    sql: ${daily_weather.daily_max_temperature} ;;
+    value_format_name: decimal_1
+    drill_fields: [daily_weather.station, daily_weather.date]
+  }
+
+  measure: the_coldest_day {
+    description: "The day with the min highest temperature"
+    type: min
+    sql: ${daily_weather.daily_max_temperature} ;;
+    value_format_name: decimal_1
+    drill_fields: [daily_weather.station, daily_weather.date]
+  }
+
+  measure: the_coldest_night{
+    description: "The day with the lowest temperature"
+    type: min
+    sql: ${daily_weather.daily_min_temperature} ;;
+    value_format_name: decimal_1
+    drill_fields: [daily_weather.station, daily_weather.date]
+  }
+
 
 #   {% condition warm_weather_period_filter %} (EXTRACT(MONTH FROM hourly_irish_weather.date ) >= 4 AND EXTRACT(MONTH FROM hourly_irish_weather.date ) <= 10) {% endcondition %}
 
