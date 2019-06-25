@@ -78,7 +78,7 @@ view: daily_weather {
       value_format_name: decimal_1
     }
 
-    measure: gdd_measure {
+    measure: gdd_total {
       description: "Growing degree days sum"
       type: sum
       sql: ${daily_weather.gdd};;
