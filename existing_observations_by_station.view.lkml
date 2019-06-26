@@ -18,6 +18,8 @@ view: existing_observations_by_station {
       group by 1
       order by 1
       ;;
+    datagroup_trigger: default_datagroup
+
   }
 
   parameter: parameter_field {

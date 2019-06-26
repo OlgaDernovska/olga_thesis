@@ -1,9 +1,6 @@
 view: seven_years {
   derived_table: {
-    sql: -- select  hourly_irish_weather_observed_year_num,
-      -- count( distinct hourly_irish_weather_county)
-      -- -- rank() over (partition by  hourly_irish_weather_county order by hourly_irish_weather_observed_year_num) as ro
-      -- from (
+    sql:
       SELECT
         hourly_irish_weather.county  AS hourly_irish_weather_county,
           -- EXTRACT(year FROM hourly_irish_weather.date ) AS hourly_irish_weather_observed_year_num,
@@ -29,9 +26,7 @@ view: seven_years {
       WHERE EXTRACT(year FROM hourly_irish_weather.date )>=2011
       and hourly_irish_weather.station  IN ('PhoenixPark', 'Athenry', 'Shannon_Airport', 'Cork_Airport', 'JohnstownII')
       GROUP BY 1,2,3
-      -- ORDER BY 3 DESC)
-      -- group by 1
-      -- order by 1
+
        ;;
       persist_for: "24000000000 hours"
   }

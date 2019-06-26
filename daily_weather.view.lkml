@@ -11,6 +11,7 @@ view: daily_weather {
       GROUP BY 1, 2
       ORDER BY 1 DESC
        ;;
+      datagroup_trigger: default_datagroup
     }
 
     dimension: prim_key {
