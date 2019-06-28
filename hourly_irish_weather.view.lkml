@@ -20,6 +20,12 @@ view: hourly_irish_weather {
     sql: ${TABLE}.county ;;
   }
 
+  dimension: county_layer {
+    type: string
+    sql: ${TABLE}.county ;;
+    map_layer_name: county_layer
+  }
+
   dimension_group: observed {
     type: time
     timeframes: [
