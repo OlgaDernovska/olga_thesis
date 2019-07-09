@@ -7,11 +7,13 @@ view: wine_regions {
   }
 
   dimension: gdd {
+    label: "GDD"
     type: string
     sql: ${TABLE}.string_field_1 ;;
   }
 
-  dimension: MJT {
+  dimension: mjt {
+    label: "MJT"
     type: string
     sql: ${TABLE}.string_field_2 ;;
   }
