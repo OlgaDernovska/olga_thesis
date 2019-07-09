@@ -28,3 +28,5 @@ explore: hourly_irish_weather {
 
 
 explore: seven_years {}
+
+explore: wine_regions {}

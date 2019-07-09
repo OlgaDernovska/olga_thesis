@@ -254,6 +254,22 @@ view: hourly_irish_weather {
     sql: 1;;
     html: <img src="https://s3-us-east-2.amazonaws.com/s3.arts-inspiredlearning.org/wp-content/uploads/20190308110002/Weather-Banner.png" alt="Irish Weather" width="1680px"/> ;;
   }
+
+  dimension: summer_weather_image {
+    group_label: "Thesis dashboard"
+    type: string
+    sql: 1;;
+    html: <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ireland_banner-Dunguaire_Castle_and_the_lake_in_summer.jpg" alt="Discovering Irish Weather" width="1680px"/> ;;
+  }
+
+  dimension: winery_image{
+    group_label: "Thesis dashboard"
+    type: string
+    sql: 1;;
+    html: <img src="https://png.pngtree.com/thumb_back/fw800/back_pic/04/28/59/07583e4230ac2da.jpg" alt="Winery in Ireland" width="1680px"/> ;;
+
+  }
+
 #     html: <a href="/looks/1364">One look</a>;;
 #     html:<a href="/explore/olga_thesis/hourly_irish_weather?fields=hourly_irish_weather.the_warmest_day,hourly_irish_weather.the_coldest_day,hourly_irish_weather.the_coldest_night,st_patricks_day,hourly_irish_weather.station,hourly_irish_weather.county,hourly_irish_weather.observed_year&f[hourly_irish_weather.station]=PhoenixPark&f[hourly_irish_weather.observed_year]=2017&sorts=hourly_irish_weather.observed_year+desc&limit=500&column_limit=50&vis=%7B%22type%22%3A%22looker_single_record%22%2C%22series_types%22%3A%7B%7D%7D&filter_config=%7B%22hourly_irish_weather.station%22%3A%5B%7B%22type%22%3A%22%3D%22%2C%22values%22%3A%5B%7B%22constant%22%3A%22PhoenixPark%22%7D%2C%7B%7D%5D%2C%22id%22%3A1%2C%22error%22%3Afalse%7D%5D%2C%22hourly_irish_weather.observed_year%22%3A%5B%7B%22type%22%3A%22year%22%2C%22values%22%3A%5B%7B%22constant%22%3A%222017%22%2C%22unit%22%3A%22yr%22%7D%2C%7B%7D%5D%2C%22id%22%3A2%2C%22error%22%3Afalse%7D%5D%7D&dynamic_fields=%5B%7B%22measure%22%3A%22st_patricks_day%22%2C%22based_on%22%3A%22daily_weather.daily_max_temperature%22%2C%22type%22%3A%22average%22%2C%22label%22%3A%22St.+Patrick%27s+Day%22%2C%22value_format%22%3Anull%2C%22value_format_name%22%3Anull%2C%22_kind_hint%22%3A%22measure%22%2C%22_type_hint%22%3A%22number%22%2C%22filter_expression%22%3A%22%24%7Bhourly_irish_weather.observed_month_num%7D+%3D+2+AND+extract_days%28%24%7Bdaily_weather.date%7D%29+%3D+17%22%7D%2C%7B%22measure%22%3A%22calculation_2%22%2C%22based_on%22%3A%22daily_weather.daily_max_temperature%22%2C%22type%22%3A%22min%22%2C%22label%22%3A%22Calculation+2%22%2C%22expression%22%3Anull%2C%22value_format%22%3Anull%2C%22value_format_name%22%3Anull%2C%22_kind_hint%22%3A%22measure%22%2C%22_type_hint%22%3A%22number%22%7D%5D&origin=share-expanded">One look into weather</a> ;;
 
