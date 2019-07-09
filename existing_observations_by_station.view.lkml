@@ -36,6 +36,10 @@ view: existing_observations_by_station {
       label: "Sun"
       value: "hourly_irish_weather.sun"
     }
+    allowed_value: {
+      label: "Wind direction"
+      value: "hourly_irish_weather.wddir"
+    }
   }
 
   measure: count {

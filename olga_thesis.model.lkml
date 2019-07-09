@@ -30,3 +30,11 @@ explore: hourly_irish_weather {
 explore: seven_years {}
 
 explore: wine_regions {}
+
+explore: wine_produced {
+#   join: hourly_irish_weather {
+#     type: left_outer
+#     sql_on: ${wine_produced.county} = ${hourly_irish_weather.county_layer} ;;
+#     relationship: one_to_many
+#   }
+}
